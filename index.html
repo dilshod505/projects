@@ -1,1096 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1.0"
-		/>
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
-		<link
-			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-			rel="stylesheet"
-			integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-			crossorigin="anonymous"
-		/>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
 
-		<link
-			rel="stylesheet"
-			href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-		/>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
 
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link
-			rel="preconnect"
-			href="https://fonts.gstatic.com"
-			crossorigin
-		/>
-		<link
-			href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-			rel="stylesheet"
-		/>
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
-		<title>Document</title>
-		<link rel="stylesheet" href="./css/style.css" />
-	</head>
-	<body>
-		<nav class="navbar navbar-expand-md py-4">
-			<div class="container">
-				<button
-					class="navbar-toggler"
-					type="button"
-					data-bs-toggle="offcanvas"
-					data-bs-target="#offcanvas"
-					aria-controls="offcanvas"
-					aria-label="Toggle navigation"
-					style="border: none; outline: none"
-				>
-					<div>
-						<div
-							style="
-								width: 41px;
-								height: 4px;
-								background-color: #6b5af9;
-								margin-bottom: 4px;
-							"
-						></div>
-						<div
-							style="
-								width: 27px;
-								height: 4px;
-								background-color: #6b5af9;
-								margin-bottom: 4px;
-							"
-						></div>
-						<div
-							style="
-								width: 15px;
-								height: 4px;
-								background-color: #6b5af9;
-								margin-bottom: 4px;
-							"
-						></div>
-					</div>
-				</button>
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+      }
 
-				<a class="navbar-brand d-md-none" href="#">
-					<img src="./media/Group 1.png" alt="" />
-				</a>
+      li.list-group-item:hover .edit-btn {
+        display: inline-block !important;
+      }
+    </style>
+  </head>
 
-				<button
-					class="btn btn-primary-2 d-inline-block d-md-none"
-				>
-					<img src="./media/Vector.png" alt="" />
-				</button>
-				<div
-					class="offcanvas offcanvas-end"
-					tabindex="-1"
-					id="offcanvas"
-					aria-labelledby="offcanvasLabel"
-					style="width: 100%"
-				>
-					<div
-						class="offcanvas-header d-flex d-md-none justify-content-between"
-					>
-						<div>
-							<div
-								style="
-									width: 41px;
-									height: 4px;
-									background-color: #6b5af9;
-									margin-bottom: 4px;
-								"
-							></div>
-							<div
-								style="
-									width: 27px;
-									height: 4px;
-									background-color: #6b5af9;
-									margin-bottom: 4px;
-								"
-							></div>
-							<div
-								style="
-									width: 41px;
-									height: 4px;
-									background-color: #43cd93;
-									margin-bottom: 4px;
-								"
-							></div>
-						</div>
+  <body>
+    <div id="demo"></div>
+    <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-xl-6">
+          <div class="rounded shadow p-3 bg-light">
+            <h1 class="text-center my-4">Todo App</h1>
+            <div class="input-group mb-3">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="New Task"
+                id="task-input"
+              />
+              <button
+                class="input-group-text bg-primary text-light"
+                id="add-btn"
+                onclick="addTask()"
+              >
+                + Add
+              </button>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li
+                class="list-group-item d-flex justify-content-between align-items-start"
+              >
+                <div class="me-auto">
+                  <button class="btn border-0 p-0 me-2">
+                    <!-- <i class="fa-regular fa-circle"></i> -->
+                    <i class="fa-regular fa-circle-check"></i>
+                  </button>
+                  <span class="text-secondary text-decoration-line-through"
+                    >Task 01</span
+                  >
+                </div>
+                <div>
+                  <button class="btn border-0 p-0 me-2 edit-btn d-none">
+                    <i class="fa-solid fa-pencil text-secondary"></i>
+                  </button>
+                  <button class="btn border-0 p-0">
+                    <i class="fa-regular fa-trash-can text-danger"></i>
+                  </button>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
 
-						<img src="./media/Group 1.png" alt="" />
-						<button
-							class="btn btn-primary-2 d-inline-block d-md-none"
-						>
-							<img src="./media/Vector.png" alt="" />
-						</button>
-						<button
-							type="button"
-							class="btn-close"
-							data-bs-dismiss="offcanvas"
-							aria-label="Close"
-							style="
-								position: absolute;
-								top: 120px;
-								left: 50px;
-								font-weight: 900;
-								font-size: 20px;
-								color: black;
-							"
-						></button>
-					</div>
-					<div
-						class="offcanvas-body d-flex justify-content-center align-items-center"
-						style="padding-inline: auto"
-					>
-						<ul
-							class="navbar-nav flex-grow-1 justify-content-between"
-						>
-							<li
-								class="logo-1-li nav-item d-none d-md-inline-block"
-							>
-								<img
-									src="./media/Group 1.png"
-									alt=""
-								/>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#"
-									>Главная</a
-								>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#">Цены</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#"
-									>Кейсы и отзывы</a
-								>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#"
-									>Контакты</a
-								>
-							</li>
-							<li
-								class="nav-item d-flex justify-content-between"
-							>
-								<div>
-									<div
-										style="display: inline-block"
-										class="d-none d-xl-inline-block"
-									>
-										<img
-											src="./media/telegram (3) 1.png"
-											alt=""
-											class="me-2"
-										/>
-										<img
-											src="./media/whatsapp (1) 1.png"
-											alt=""
-											class="me-2"
-										/>
-									</div>
-									<h2
-										class="d-l=inline-block d-md-none"
-									>
-										info@millenium.ru
-									</h2>
-									<h2
-										class="d-inline-block d-md-none d-xl-inline-block"
-									>
-										+ 7 (495) 555 65 65
-									</h2>
-									<h3
-										class="d-none d-xl-block text-end"
-									>
-										Ежедневно c 09:00 до 18:00
-									</h3>
-								</div>
-							</li>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
 
-							<li class="d-none d-md-inline-block">
-								<button class="btn btn-primary">
-									Заказать звонок
-								</button>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</nav>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
 
-		<!-- Dilwod yozgan kodla -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-		<section id="main">
-			<img
-				src="./media/Group 30.png"
-				alt=""
-				class="position-absolute img-abs-bir"
-				style="top: 0; left: 40%"
-			/>
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-4 text">
-						<h1>
-							Разработка интернет-магазинов
-							<h1 class="text-primary">
-								на 1C-Битрикс
-							</h1>
-						</h1>
-						<p>
-							Разработаем интернет-магазин за 30 дней c
-							уникальным дизайном и продуманной
-							структурой который
-							<span class="text-primary"
-								>выделит вас на фоне конкурентов</span
-							>
-						</p>
-						<button class="btn btn-primary p-3 mt-5 mb-2">
-							Узнать стоимость
-						</button>
-						<p class="p-two">
-							<span class="text-primary"
-								>Оставьте заявку и получите бесплатную
-								консультацию от специалиста, полный
-								расчет стоимости разработки и
-								бонус:</span
-							>
-							«15 сервисов которые покажут стратегию
-							продвижения конкурентов, всё об их выдаче
-							в поиске и не только»
-						</p>
-					</div>
-					<div class="col-lg-8 mb-5">
-						<img
-							src="./images/rasm-1.png"
-							alt=""
-							style="width: 120%"
-						/>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section id="part-1" class="my-5">
-			<div class="container">
-				<div class="text">
-					<h1
-						style="
-							text-align: center;
-							margin-bottom: 30px;
-						"
-					>
-						Мы создаем интернет-магазины,
-						<span class="text-primary"
-							>которые продают</span
-						>
-					</h1>
-				</div>
-
-				<div class="d-flex flex-wrap">
-					<div class="col-md-6">
-						<img src="./images/01.png" alt="" />
-						<h4>Удобный интерфейс</h4>
-						<p>
-							Блоковая подача информации, удобные
-							кнопки, карточки товаров, понятное меню и
-							легкая навигация по многостраничному
-							сайту.
-						</p>
-					</div>
-					<div class="col-md-6 col-lg-4">
-						<img src="./images/02.png" alt="" />
-						<h4>Продающая структура</h4>
-						<p>
-							Делаем анализ вашей целевой аудитории и
-							вашего предложения. Опираясь на анализ
-							прописываем продающуюу структуру сайта.
-						</p>
-					</div>
-					<div class="col-md-6 col-lg-4">
-						<img src="./images/03.png" alt="" />
-						<h4>Адаптивность</h4>
-						<p>
-							Сайт корректно отображается на различных
-							устройствах, элементы динамически
-							подстраиваются под различные разрешения
-							экрана, что повышает конверсию сайта в
-							покупку.
-						</p>
-					</div>
-					<div class="col-md-6 col-lg-4">
-						<img src="./images/04.png" alt="" />
-						<h4>Уникальный дизайн</h4>
-						<p>
-							Не пользуемся шаблонными решениями. Под
-							каждый проект разрабатывается
-							индивидуальный дизайн который подчеркнет
-							имидж компании
-						</p>
-					</div>
-					<div class="col-md-6 col-lg-4">
-						<img src="./images/05.png" alt="" />
-						<h4 class="h4-5">Защита и безопасность</h4>
-						<p>
-							Подключаем HTPS протокол, защиту от DDOS
-							атак, чтобы данные клиентов были в
-							безопасности.
-						</p>
-					</div>
-					<div class="col-md-6 col-lg-4">
-						<img src="./images/06.png" alt="" />
-						<h4>SEO оптимизация</h4>
-						<p>
-							Сайты соответствуют требованиям поисковой
-							оптимизации, они без труда покоряют топы
-							поисковой выдачи Яндекс и Google.
-						</p>
-					</div>
-				</div>
-
-				<button
-					type="button"
-					class="text-light btn btn-lg mb-5"
-				>
-					Узнать стоимость
-				</button>
-			</div>
-		</section>
-
-		<section id="part-2" class="my-5">
-			<div class="container my-5">
-				<div class="row">
-					<h1 class="mb-5">
-						Что вы
-						<span class="text-primary">получаете ?</span>
-					</h1>
-					<div class="col-md-6 media">
-						<img
-							src="./images/rasm-2.png"
-							alt=""
-							style="width: 100%"
-						/>
-					</div>
-					<div class="col-md-6 text text1">
-						<h3 class="text-primary">Каталог товаров</h3>
-						<p>
-							<img src="./images/radios.png" />
-							возможность выгружать свои товары в
-							неограниченном количестве
-						</p>
-						<p>
-							<img src="./images/radios.png" />
-							возможность выгружать свои товары в
-							неограниченном количестве
-						</p>
-						<p>
-							<img src="./images/radios.png" />
-							возможность выгружать свои товары в
-							неограниченном количестве
-						</p>
-						<p>
-							<img src="./images/radios.png" />
-							возможность выгружать свои товары в
-							неограниченном количестве
-						</p>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section id="part-2" class="my-5">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 text">
-						<h3 class="text-primary">
-							Оформление заказа
-						</h3>
-						<p>
-							<img src="./images/radios.png" />
-							личный кабинет
-						</p>
-						<p>
-							<img src="./images/radios.png" />
-							корзина с отображением выбранных товаров
-						</p>
-						<p>
-							<img src="./images/radios.png" />
-							оформление заказа с указанием контактных
-							данных
-						</p>
-						<p>
-							<img src="./images/radios.png" />
-							возможность приема онлайн-платежей
-						</p>
-						<p>
-							<img src="./images/radios.png" />
-							использование купонов, скидок и
-							специальных предложений
-						</p>
-					</div>
-					<div class="col-md-6 media">
-						<img
-							src="./images/rasm-3 (2).png"
-							alt=""
-							style="width: 100%"
-							class="rasm-3"
-						/>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section id="part-2" class="my-5">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 media">
-						<img
-							src="./images/rasm-4.png"
-							alt=""
-							style="width: 100%"
-						/>
-					</div>
-					<div class="col-md-6 text">
-						<h3 class="text-primary">Интеграции</h3>
-						<p>
-							<img src="./images/radios.png" />
-							1C, Мой склад (выгрузка товаров на сайт,
-							полная синхронизация)
-						</p>
-						<p>
-							<img src="./images/radios.png" />
-							Маркетплейсы (Яндекс.Маркет, Wildberries,
-							Goods, Ozon)
-						</p>
-						<p>
-							<img src="./images/radios.png" />
-							Интеграция со службами доставки СДЭК,
-							Почта России
-						</p>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section id="part-2" class="my-5">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 text">
-						<h3 class="text-primary">CRM</h3>
-						<p>
-							<img src="./images/radios.png" />
-							фиксация и отслеживание поступивших заявок
-						</p>
-						<p>
-							<img src="./images/radios.png" />
-							уведомления о заказах
-						</p>
-						<p>
-							<img src="./images/radios.png" />
-							отчетность магазина
-						</p>
-					</div>
-					<div class="col-md-6 media">
-						<img
-							src="./images/rasm-5.png"
-							alt=""
-							style="width: 100%"
-						/>
-					</div>
-				</div>
-				<button class="btn mt-5 mb-5 text-light">
-					Узнать стоимость
-				</button>
-			</div>
-		</section>
-
-		<section id="part-3" class="my-5">
-			<div class="container">
-				<div
-					class="cart d-flex flex-wrap justify-content-around"
-				>
-					<img
-						src="./media/gold-bitrix 1.png"
-						alt=""
-						class="gold-img"
-					/>
-					<div class="one d-none d-lg-inline-block">
-						<p>Сертификат</p>
-						<h4>
-							Золотой сертифицированный партнер битрикс
-						</h4>
-						<img src="./media/sertif-1 1.png" alt="" />
-					</div>
-					<div class="two d-none d-lg-inline-block">
-						<p>Сертификат</p>
-						<h4>
-							Прграммы мониторинга качества внедрений
-						</h4>
-						<img src="./media/sertif-2 1.png" alt="" />
-					</div>
-
-					<!-- SWIPER -->
-
-					<div class="swiper d-block d-lg-none">
-						<!-- Additional required wrapper -->
-						<div class="swiper-wrapper">
-							<!-- Slides -->
-							<div class="swiper-slide">
-								<div class="one">
-									<p>Сертификат</p>
-									<h4>
-										Золотой сертифицированный
-										партнер битрикс
-									</h4>
-									<img
-										src="./media/sertif-1 1.png"
-										alt=""
-									/>
-								</div>
-							</div>
-							<div class="swiper-slide">
-								<div class="two">
-									<p>Сертификат</p>
-									<h4>
-										Прграммы мониторинга качества
-										внедрений
-									</h4>
-									<img
-										src="./media/sertif-2 1.png"
-										alt=""
-									/>
-								</div>
-							</div>
-						</div>
-						<!-- If we need pagination -->
-						<div class="swiper-pagination"></div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section id="part-4" class="my-5">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-6 text pe-lg-5">
-						<h2 class="mt-5">
-							Исследуем
-							<span class="text-primary">бизнес</span>
-						</h2>
-						<p>
-							Каждый клиент – своя история. Мы не берем
-							шаблонные решения, а исследуем рынок
-							конкретно под ваши цели и задачи.
-						</p>
-						<p>
-							Сделать интернет-магазин с нуля непросто.
-							Нужен сайт с качественной разработкой
-							дизайна, который не будет отвлекать от
-							сути, наполнением и рабочими модулями.
-							Кроме этого, для успешного запуска
-							электронной торговой площадки владельцу
-							бизнеса требуется найти поставщиков,
-							выбрать товарные позиции, просчитать
-							рентабельность, уладить другие
-							организационные вопросы вне сети.
-						</p>
-						<p>
-							Создание интернет-магазина лучше
-							делегировать на профессионалов. Мы возьмем
-							на себя вопросы по разработке
-							интернет-магазина под ключ. Специалисты
-							компании предоставляют заказчику готовый
-							продающий сайт. Он уже наполнен контентом,
-							ориентирован на конечного потребителя и
-							интуитивно понятен для заказчика.
-						</p>
-					</div>
-					<div
-						class="col-md-6 media d-flex align-items-center"
-					>
-						<img src="./images/img-end.png" alt="" />
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<!-- Ozimi kodlarim -->
-
-		<section class="my-5">
-			<div class="container my-5 pb-5">
-				<h2 class="etap-h2">Этапы</h2>
-				<div class="row">
-					<div class="col-lg-4 d-none d-lg-inline-block">
-						<div class="step-container">
-							<div class="step-wrapper">
-								<div class="step-tail"></div>
-								<div
-									class="supposed-icon icon-1"
-								></div>
-								<div class="step-content">
-									<div class="step-title">
-										<a
-											class="fialka"
-											href="#part-one"
-											>01. Маркетинговый анализ
-											бизнеса</a
-										>
-									</div>
-								</div>
-							</div>
-							<div class="step-wrapper">
-								<div class="step-tail"></div>
-								<div class="supposed-icon"></div>
-								<div class="step-content">
-									<div class="step-title">
-										<a href="#part-two"
-											>02. Привлекательный
-											дизайн</a
-										>
-									</div>
-								</div>
-							</div>
-							<div class="step-wrapper">
-								<div class="step-tail"></div>
-								<div class="supposed-icon"></div>
-								<div class="step-content">
-									<div class="step-title">
-										<a href="#part-three"
-											>03. Профессиональная
-											верстка</a
-										>
-									</div>
-								</div>
-							</div>
-							<div class="step-wrapper">
-								<div class="step-tail"></div>
-								<div class="supposed-icon"></div>
-								<div class="step-content">
-									<div class="step-title">
-										<a href="#part-four"
-											>04. «Посадка» на CMS</a
-										>
-									</div>
-								</div>
-							</div>
-							<div class="step-wrapper">
-								<div class="step-tail"></div>
-								<div class="supposed-icon"></div>
-								<div class="step-content">
-									<div class="step-title">
-										<a href="#part-five"
-											>05. Тестирование и
-											доработка</a
-										>
-									</div>
-								</div>
-							</div>
-							<div class="step-wrapper">
-								<div class="supposed-icon"></div>
-								<div class="step-content">
-									<div class="step-title">
-										<a href="#part-six"
-											>06. Запуск сайта</a
-										>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-lg-8">
-						<div id="part-one" class="card-numbered">
-							<div
-								class="d-flex flex-wrap align-items-center info-div"
-							>
-								<span
-									class="number-span rounded-circle text-white d-flex justify-content-center align-items-center"
-									>1</span
-								>
-								<h2>Маркетинговый анализ бизнеса</h2>
-							</div>
-							<p>
-								На предварительном этапе мы выясняем
-								специфику вашего бизнеса, товаров.
-								Отмечаем ваши преимущества и
-								уникальные предложения, изучаем
-								ожидания и потребности целевой
-								аудитории, рассматриваем ближайшее
-								конкурентное окружение.
-							</p>
-							<p>
-								На основании полученных данных мы
-								разрабатываем прототип
-								интернет-магазина, пишем техническое
-								ТЗ для специалистов, готовим
-								рекомендации по текстовому наполнению
-								с учетом требований SEO, разрабатываем
-								план по внешней и внутренней
-								оптимизации сайта. Также мы создаем
-								набор готовых элементов для
-								пользовательского интерфейса.
-							</p>
-							<img src="./media/Frame 6 2.png" alt="" />
-						</div>
-
-						<div id="part-two" class="card-numbered">
-							<div
-								class="d-flex flex-wrap align-items-center info-div"
-							>
-								<span
-									class="number-span rounded-circle text-white d-flex justify-content-center align-items-center"
-									>2</span
-								>
-								<h2>Привлекательный дизайн</h2>
-							</div>
-							<p>
-								Интерфейс сайта будет соответствовать
-								современным требованиям и отвечать
-								ожиданиям целевой аудитории. Опытные
-								специалисты Millenium создадут
-								UX-дизайн, отталкиваясь от данных
-								анализа пользовательского поведения,
-								что позволит в несколько раз увеличить
-								конверсию.
-							</p>
-
-							<p>
-								Мы подберем оптимальные цветовые
-								сочетания (основной, дополнительные,
-								акцентные цвета), уделим внимание
-								четкости графики, наглядности
-								интерфейса, понятной и лаконичной
-								визуализации.
-							</p>
-							<img
-								src="./media/FireShot Capture 025 - Каталог алмазного оборудования FORTEZZO - fortezzo 1.png"
-								alt=""
-							/>
-						</div>
-
-						<div id="part-three" class="card-numbered">
-							<div
-								class="d-flex flex-wrap align-items-center info-div"
-							>
-								<span
-									class="number-span rounded-circle text-white d-flex justify-content-center align-items-center"
-									>3</span
-								>
-								<h2>Профессиональная верстка</h2>
-							</div>
-							<p>
-								Мы производим верстку по стандарту
-								Pixel Perfect, который предполагает
-								точное соответствие сверстанных
-								страниц дизайн-макету. Наши
-								специалисты напишут чистый код с
-								двухфакторной проверкой, позволяющий
-								обеспечить высокую скорость загрузки
-								на любых браузерах и электронных
-								устройствах (десктопных и мобильных).
-							</p>
-
-							<p>
-								Профессиональная адаптивная верстка
-								является важным условием бесперебойной
-								надежной работы сайта на протяжении
-								длительного времени.
-							</p>
-							<img
-								src="./media/AdobeEdgeHTML3 1.png"
-								alt=""
-							/>
-						</div>
-
-						<div id="part-four" class="card-numbered">
-							<div
-								class="d-flex flex-wrap align-items-center info-div"
-							>
-								<span
-									class="number-span rounded-circle text-white d-flex justify-content-center align-items-center"
-									>4</span
-								>
-								<h2>«Посадка» на CMS</h2>
-							</div>
-							<p>
-								Невозможно представить
-								интернет-магазин без системы
-								управления сайтом. Специалисты
-								Millenium выполнят посадку готовой
-								верстки вашего магазина на CMS №1 в
-								странах СНГ - 1C Битрикс.
-							</p>
-							<p>
-								Благодаря CMS, вы просто заходите в
-								административную панель, и, при помощи
-								понятных полей, легко управляете
-								содержимым — редактируете новости,
-								вносите коррективы в товары, добавляет
-								фото и видеоконтент, модерируете и
-								выполняете множество других действий,
-								которые без CMS были бы сущим
-								кошмаром.
-							</p>
-							<img src="./media/order 1.png" alt="" />
-						</div>
-
-						<div id="part-five" class="card-numbered">
-							<div
-								class="d-flex flex-wrap align-items-center info-div"
-							>
-								<span
-									class="number-span rounded-circle text-white d-flex justify-content-center align-items-center"
-									>5</span
-								>
-								<h2>Тестирование и доработка</h2>
-							</div>
-							<p>
-								Чтобы избежать проблем во время
-								использования сайта, на данном этапе
-								мы отрабатываем все возможные сценарии
-								взаимодействия пользователей с сайтом.
-								Это позволяет вовремя выявить ошибки и
-								устранить их. Мы тестируем usability и
-								безопасность сайта, проверяем скорость
-								загрузки страниц, работу форм обратной
-								связи и интерактивных элементов,
-								отображение страниц на разных
-								устройствах. Это позволяет на 100%
-								гарантировать функциональность
-								ресурса.
-							</p>
-						</div>
-
-						<div id="part-six" class="card-numbered mb-0">
-							<div
-								class="d-flex flex-wrap align-items-center info-div"
-							>
-								<span
-									class="number-span rounded-circle text-white d-flex justify-content-center align-items-center"
-									>6</span
-								>
-								<h2>Запуск сайта</h2>
-							</div>
-							<p>
-								Когда все проверено и выполнены все
-								нужные доработки, остается лишь
-								выполнить грамотный запуск сайта. Наши
-								специалисты сверяют всё по чек-листу,
-								чтобы избежать неприятностей и
-								получить на выходе идеальный
-								интернет-магазин с высокой конверсией.
-								Сайт от профессионалов Millenium
-								позволит вам легко привлекать новых
-								клиентов и станет достойным лицом
-								вашей компании в интернете.
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section class="my-5">
-			<img
-				src="./media/5f1544f51af0b51978e5b1e7_IMG_3808 1.png"
-				alt=""
-				style="width: 100%"
-			/>
-		</section>
-
-		<section id="form-sect" class="my-5 py-5">
-			<div class="container position-relative">
-				<div class="row">
-					<div class="col-lg-6 pe-lg-5">
-						<h2 class="d-inline-block d-lg-block">
-							Компания
-						</h2>
-						<h2>Millenium-</h2>
-						<p>
-							Это дорогая и долгая разработка
-							интернет-магазинов на 1C Битрикс! Нельзя
-							сделать <span>качественный</span> цифровой
-							продукт за дешево и быстро!
-						</p>
-						<p>
-							Мы создадим интернет-магазин c нуля.
-							Заказчику не придется искать других
-							IT-специалистов для дальнейшей настройки и
-							запуска сайта. Мы настроим сервисы,
-							интегрируем модули для онлайн-торговли,
-							добавим контент и товары. Работы по
-							созданию интернет-магазина c нуля ведутся
-							только после анализа ниши бизнеса.
-						</p>
-					</div>
-
-					<div class="col-lg-6 form-div">
-						<h3>
-							Звоните нам по телефону +7 (495) 792-66-69
-						</h3>
-						<small
-							>или закажите обратный звонок чтобы
-							получить ответы на все интересующие вас
-							вопросы.</small
-						>
-						<form>
-							<input
-								type="text"
-								name="name"
-								id="name"
-								placeholder="Введите ваше имя"
-							/>
-							<input
-								type="text"
-								name="number"
-								id="number"
-								placeholder="+ 7 (999) 999 99 99"
-							/>
-							<button class="btn btn-light">
-								Перезвоните мне
-							</button>
-							<div class="mb-3 form-check">
-								<input
-									type="checkbox"
-									class="form-check-input"
-									id="exampleCheck1"
-								/>
-								<label
-									class="form-check-label"
-									for="exampleCheck1"
-									>Cогласен/а на обработку
-									персональных данных</label
-								>
-							</div>
-						</form>
-					</div>
-				</div>
-
-				<img
-					src="./media/Platonic_1_-_Octa0005 1.png"
-					alt=""
-					class="position-absolute"
-					style="top: -73px; left: 30%"
-				/>
-
-				<img
-					src="./media/Cylinder_Y1_-_Extra_Thin0006 1 1.png"
-					alt=""
-					class="position-absolute"
-					style="
-						top: 50%;
-						left: 90%;
-						transform: translatey(-50%);
-					"
-				/>
-
-				<img
-					src="./media/Purple-in-Basic2 1 1.png"
-					alt=""
-					class="position-absolute hand-img"
-					style="left: 0"
-				/>
-
-				<img
-					src="./media/Cube_Rounded0005 (1) 1.png"
-					alt=""
-					class="position-absolute"
-					style="bottom: -70px; right: -11px"
-				/>
-
-				<img
-					src="./media/5f0fd3c8ed6dcee0b99b11fa_Confetti 2 1 1.png"
-					alt=""
-					class="position-absolute circle-img"
-					style="top: 75%; transform: translateX(-50%)"
-				/>
-			</div>
-		</section>
-
-		<footer class="mt-5 p-5">
-			<div class="container">
-				<h3>Напишите нам</h3>
-				<div
-					class="d-flex flex-wrap justify-content-between align-items-center email-div"
-				>
-					<h2>info@millenium.ru</h2>
-					<button class="btn">Заказать звонок</button>
-				</div>
-
-				<div
-					class="d-flex flex-wrap justify-content-between"
-					style="width: 100%"
-				>
-					<p>
-						Москва, ул. Профсоюзная 76, БЦ «ГАЛЕРЕЯ 76» 2
-						этаж
-					</p>
-					<div
-						class="d-flex justify-content-between"
-						style="width: 90px"
-					>
-						<a href="#">
-							<img
-								src="./media/telegram (3) 2.png"
-								alt=""
-							/>
-						</a>
-						<a href="#">
-							<img
-								src="./media/whatsapp (1) 2.png"
-								alt=""
-							/>
-						</a>
-					</div>
-				</div>
-				<p>+7 (495) 792-66-69 пн-пт 10:00-19:00</p>
-
-				<img
-					src="./media/Group 19.png"
-					alt=""
-					class="logo-img"
-				/>
-
-				<small
-					>© 2018-2021 | Millenium - создание
-					интернет-магазинов на 1C Битрикс</small
-				>
-				<small class="text-underline"
-					>Политика конфиденциальности</small
-				>
-			</div>
-		</footer>
-
-		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-			integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-			crossorigin="anonymous"
-		></script>
-
-		<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-		<script>
-			const swiper = new Swiper(".swiper", {
-				// Optional parameters
-				loop: true,
-
-				// If we need pagination
-				pagination: {
-					el: ".swiper-pagination",
-				},
-
-				// Navigation arrows
-				navigation: {
-					nextEl: ".swiper-button-next",
-					prevEl: ".swiper-button-prev",
-				},
-
-				// And if we need scrollbar
-				scrollbar: {
-					el: ".swiper-scrollbar",
-				},
-			});
-		</script>
-	</body>
+    <script src="./script.js"></script>
+  </body>
 </html>
